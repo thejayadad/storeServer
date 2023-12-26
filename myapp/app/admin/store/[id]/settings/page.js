@@ -51,7 +51,7 @@ const SettingsPage = async ({params}) => {
    </form>
 
 </div>
-<div className='border w-full mt-8 mb-8 border-gray-900'></div>
+<div className='border w-full mt-4 mb-6 border-gray-900'></div>
 
 
 <form
@@ -83,19 +83,3 @@ const SettingsPage = async ({params}) => {
 export default SettingsPage
 
 
-{/* <form
-action={updateStore}
->
-  <input
-  type='text'
-  name='name'
-  placeholder='Name....'
-  />
-  <input
-  type='text'
-  name='id'
-  hidden
-  value={store.id}
-  />
-  <button type='submit'>Update</button>
-</form> */}

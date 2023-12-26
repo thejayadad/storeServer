@@ -8,7 +8,7 @@ const Input = ({name, placeholder, type}) => {
         name={name}
         placeholder={placeholder}
         type={type}  
-        className="input input-ghost w-full max-w-xs" 
+        className="input input-ghost w-full max-w-md" 
         />
     </div>
   )

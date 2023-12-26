@@ -9,11 +9,11 @@ const AdminPage = async () => {
   return (
     <div className='max-w-screen-lg mx-auto'>AdminPage
     <Modal
+          opening='New Store'
+          title='New Store'
+          description='Name Your New Store'
       children={
       <CreateStore
-      opening={'New Store'}
-      title='New Store'
-      description='Name Your New Store'
         />}
 
     />

@@ -4,7 +4,7 @@ import React from 'react'
 const Modal = ({children, title, description, opening }) => {
   return (
     <div>
-      <label htmlFor="my_modal_6" className="btn">{opening}</label>
+      <label htmlFor="my_modal_6" className="cursor-pointer text-gray-500 hover:text-gray-700 transition duration-300 ease-in-out">{opening}</label>
 
     <input type="checkbox" id="my_modal_6" className="modal-toggle" />
     <div className="modal" role="dialog">

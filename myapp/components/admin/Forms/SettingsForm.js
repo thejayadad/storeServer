@@ -23,7 +23,7 @@ const SettingsForm = ({initialData}) => {
         <input 
         type='hidden'
         name='id'
-        value={initialData.id}
+        value={store.id}
         />
             <TrashIcon
             className={'h-8 w-8 hover:text-gray-500 cursor-pointer'}
@@ -34,15 +34,22 @@ const SettingsForm = ({initialData}) => {
     <div className='border w-full mt-8 mb-8 border-gray-900'></div>
     <form
         action={updateStore}
-        className='space-y8 w-full'
+        className='space-y-8 w-full'
         >
         <div className='gap-8'>
             <label>Name</label>
             <Input
-            placeholder={initialData.name}
-            name='name'
-            
-            />
+        placeholder={store.name}
+        name='name'
+        type='text'            
+        />
+        <input 
+        hidden
+        type='text'
+        name='id'
+        value={store.id}
+        
+        />
         </div>
             <SubmitButton/>
         </form>

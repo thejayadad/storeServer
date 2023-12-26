@@ -15,7 +15,9 @@ const AuthLinks = async () => {
         {!!session && (
             <>
               {session.user.email === 'thejayadad@gmail.com' && (
-                <AdminIcon />
+                <Link href={'/admin'}>
+                  <AdminIcon />
+                </Link>
           )}
               <Link href="/profile">
             <Avatar imageUrl={session.user.image} alt={session.user.name} />

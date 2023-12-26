@@ -8,8 +8,7 @@ const StoreDashboard = async ({params}) => {
     const store = await getSingleStore(id)
   return (
     <div>
-        {store.name}
-        <Link href={`/admin/store/${store.id}/settings`}>Settings</Link>
+
     </div>
   )
 }
