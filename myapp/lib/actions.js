@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import getServerUser from "./getServerUser";
 import Showcase from "@/models/Showcase";
 import mongoose from "mongoose";
+import  Types  from "mongoose";
 
 //ADD SHOWCASE
 
@@ -15,21 +16,7 @@ export const createShowcase = async (formData) => {
     try {
         db.connect();
 
-        const store = await Store.aggregate([
-            {
-                $match: {
-                    _id: storeId
-                }
-            },
-            {
-                $project: {
-                    _id: 1,
-                    name: 1,
-                    showcase: 1
-                }
-            }
-        ]);
-
+        // Create a new showcase
         const newShowcase = new Showcase({
             name,
             label,
@@ -37,22 +24,20 @@ export const createShowcase = async (formData) => {
             storeId 
         });
 
+        // Save the new showcase
         await newShowcase.save();
 
-        await Store.findOneAndUpdate(
-            { _id: mongoose.Types.ObjectId(storeId) },
-            { $push: { showcase: newShowcase.storeId } },
+        const updatedStore = await Store.findOne(
+            mongoose.Types.ObjectId(storeId),
+            { $push: { showcase: newShowcase._id } },
             { new: true }
         );
 
-        return  newShowcase;
+        return { newShowcase, updatedStore };
     } catch (error) {
         throw new Error('Failed to Create Showcase ' + error);
     }
-
-    revalidatePath("/admin");
-    redirect("/admin");
-}
+};
 
 
 
