@@ -8,7 +8,7 @@ const StoreDashboard = async ({params}) => {
     const store = await getSingleStore(id)
   return (
     <div>
-
+      
     </div>
   )
 }

@@ -27,13 +27,13 @@ export const createShowcase = async (formData) => {
         // Save the new showcase
         await newShowcase.save();
 
-        const updatedStore = await Store.findOne(
-            mongoose.Types.ObjectId(storeId),
-            { $push: { showcase: newShowcase._id } },
-            { new: true }
-        );
+        // const updatedStore = await Store.findOne(
+        //     mongoose.Types.ObjectId(storeId),
+        //     { $push: { showcase: newShowcase._id } },
+        //     { new: true }
+        // );
 
-        return { newShowcase, updatedStore };
+        // return { newShowcase, updatedStore };
     } catch (error) {
         throw new Error('Failed to Create Showcase ' + error);
     }
