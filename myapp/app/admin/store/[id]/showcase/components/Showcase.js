@@ -8,8 +8,9 @@ import { getSingleStore } from '@/lib/data'
 import Modal from '@/components/ui/Modal'
 import ShowCaseForm from '@/components/admin/Forms/ShowCaseForm'
 
-const Showcase = ({params}) => {
-    // children, title, description, opening 
+const Showcase = (id) => {
+    
+    console.log("StoreId from showcase " + id)
 
   return (
     <section className='px-4 py-8 w-full'>
@@ -24,7 +25,7 @@ const Showcase = ({params}) => {
         title={'New Showcase'}
         description={'Start Building Your ShowCase Below'}
         className='rounded-full hover:bg-gray-700 flex items-center gap-2 p-2 hover:text-white'
-        children={<ShowCaseForm />}
+        children={<ShowCaseForm storeId={id} />}
         />
         </div>
         </div>

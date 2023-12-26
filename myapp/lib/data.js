@@ -17,7 +17,6 @@ export const getStores = async () => {
 
 //GET INDIVIDUAL STORE
 export const getSingleStore = async (id) => {
-    console.log("Store ID " + id)
     try {
         db.connect()
 

@@ -4,7 +4,57 @@ import Store from "@/models/Store";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import getServerUser from "./getServerUser";
-import Link from "next/link";
+import Showcase from "@/models/Showcase";
+import mongoose from "mongoose";
+
+//ADD SHOWCASE
+
+export const createShowcase = async (formData) => {
+    const { name, label, imageUrl, storeId } = Object.fromEntries(formData);
+
+    try {
+        db.connect();
+
+        const store = await Store.aggregate([
+            {
+                $match: {
+                    _id: storeId
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    showcase: 1
+                }
+            }
+        ]);
+
+        const newShowcase = new Showcase({
+            name,
+            label,
+            imageUrl,
+            storeId 
+        });
+
+        await newShowcase.save();
+
+        await Store.findOneAndUpdate(
+            { _id: mongoose.Types.ObjectId(storeId) },
+            { $push: { showcase: newShowcase.storeId } },
+            { new: true }
+        );
+
+        return  newShowcase;
+    } catch (error) {
+        throw new Error('Failed to Create Showcase ' + error);
+    }
+
+    revalidatePath("/admin");
+    redirect("/admin");
+}
+
+
 
 //ADD STORE
 export const createStore = async (formData) => {

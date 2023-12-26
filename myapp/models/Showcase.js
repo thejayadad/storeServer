@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const ShowcaseSchema = new mongoose.Schema({
     name: {type: String},
-    storeId: { type: mongoose.Schema.Types.ObjectId, ref: "Store" },
+    storeId: String,
     label: String,
     imageUrl: String,
 }, {timestamps: true})

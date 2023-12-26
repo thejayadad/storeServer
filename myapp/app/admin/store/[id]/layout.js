@@ -1,6 +1,7 @@
 import { getSingleStore } from '@/lib/data';
 import Link from 'next/link';
 import React from 'react'
+import { StoreProvider } from '@/lib/storeContext';
 
 const layout = async ({children, params}) => {
   const {id} = params;
@@ -12,7 +13,9 @@ const layout = async ({children, params}) => {
         <Link href={`/admin/store/${store.id}/settings`}>Settings</Link>
         <Link href={`/admin/store/${store.id}/showcase`}>Showcase</Link>
         </div>
+        <StoreProvider storeId={store.id}>
         {children}
+        </StoreProvider>
     </div>
   )
 }
