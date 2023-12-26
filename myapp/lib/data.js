@@ -16,11 +16,12 @@ export const getStores = async () => {
 }
 
 //GET INDIVIDUAL STORE
-export const getStore = async (id) => {
+export const getSingleStore = async (id) => {
     console.log("Store ID " + id)
     try {
         db.connect()
-        const store = await Store.findById(id)
+
+        const store = await Store.findById(id);
         return store
     } catch (error) {
         throw new Error("Failed to fetch Store! " + error);

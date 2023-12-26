@@ -6,10 +6,12 @@ import { FiLogOut } from 'react-icons/fi';
 const LogoutButton = () => {
   return (
     <button
-      className="flex items-center gap-2 p-1"
+      className="flex items-center hover:text-gray-900 gap-2 p-1"
       onClick={() => signOut()}
     >
-      <span>Logout</span>
+      <span
+      className='hover:text-gray-900 text-gray-400'
+      >Logout</span>
       <FiLogOut />
     </button>
   );

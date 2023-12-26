@@ -9,7 +9,7 @@ export function SubmitButton() {
 
   return (
     <button
-    className='mt-4 btn btn-wide'
+    className='mt-4 bg-gray-800 text-white hover:bg-gray-500  rounded-md  p-2'
     type="submit" disabled={pending}>
       {pending ? (
         <div className="flex justify-center items-center">

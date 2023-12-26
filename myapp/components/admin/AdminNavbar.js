@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const AdminNavbar = () => {
@@ -7,7 +8,7 @@ const AdminNavbar = () => {
             <div>Select Store</div>
             <div>Routes</div>
             <div className='ml-auto flex items-center space-x-4'>
-            Auth
+              Settings
             </div>
         </div>
     </header>

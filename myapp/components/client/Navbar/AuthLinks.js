@@ -4,6 +4,7 @@ import LoginWithGoogle from '@/components/ui/Button/LoginWithGoogle'
 import LogoutButton from '@/components/ui/Button/LogoutButton'
 import {getServerSession} from "next-auth";
 import Link from "next/link";
+import AdminIcon from '@/components/ui/AdminIcon';
 
 
 const AuthLinks = async () => {
@@ -11,17 +12,18 @@ const AuthLinks = async () => {
 
   return ( 
     <div className='flex items-center gap-2'>
-          {!!session ? (
-        <>
-          <Link href={'/admin'}>Admin</Link>
-          <Link href={'/profile'}>
+        {!!session && (
+            <>
+              {session.user.email === 'thejayadad@gmail.com' && (
+                <AdminIcon />
+          )}
+              <Link href="/profile">
             <Avatar imageUrl={session.user.image} alt={session.user.name} />
           </Link>
-          <LogoutButton />
-        </>
-      ) : (
-        <button onClick={() => signIn('google')}>Sign In</button>
-      )}
+
+              <LogoutButton />
+            </>
+          )}
           {!session && (
             <>
             <LoginWithGoogle />
@@ -30,6 +32,7 @@ const AuthLinks = async () => {
     </div>
   )
 }
+
 const Avatar = ({ imageUrl, alt }) => {
   return (
     <img
@@ -39,6 +42,7 @@ const Avatar = ({ imageUrl, alt }) => {
     />
   );
 };
+
 
 
 export default AuthLinks
